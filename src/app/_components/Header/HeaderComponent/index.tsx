@@ -12,6 +12,7 @@ import { HeaderNav } from '../Nav'
 import { noHeaderFooterUrls } from '../../../constants'
 import { usePathname } from 'next/navigation'
 
+
 const HeaderComponent = ({ header }: { header: Header }) => {
     const pathname = usePathname()
 

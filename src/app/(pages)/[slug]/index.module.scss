@@ -1,28 +1,13 @@
-@use '../../_css/queries.scss' as *;
+@import '../../_css/queries.scss';
 
-.container {
+.home {
   display: flex;
   flex-direction: column;
-  gap: 50px;
-}
+  gap: 100px;
+  margin-top: 100px;
 
-.titleWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  h3 {
-    font-weight: 400;
+  @include mid-break {
+    gap: 60px;
   }
 }
 
-.list {
-  display: grid;
-  gap: 30px;
-  padding: 0;
-  grid-template-columns: repeat(3, 1fr);
-
-  @include small-break {
-    grid-template-columns: 1fr;
-  }
-}
