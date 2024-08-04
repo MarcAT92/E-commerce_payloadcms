@@ -19,6 +19,14 @@
   grid-template-columns: repeat(4, 1fr);
   margin: 100px 0;
 
+  @media screen and (min-width: 768px) {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+    width: 100%;
+  }
+
   @include large-break {
     grid-template-columns: repeat(2, 1fr);
   }
