@@ -1,0 +1,13 @@
+Categoray Card - index.module.scsss
+.title {
+background-color: #669bbc;
+}
+
+&&
+
+CartItem - index.module.scss
+.quantity {
+  border: 1px solid gray; 
+  background-color: #669bbc;
+}
+
