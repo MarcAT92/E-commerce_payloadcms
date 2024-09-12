@@ -16,6 +16,8 @@ type FormData = {
   name: string
   password: string
   passwordConfirm: string
+  address: string 
+  contact: number 
 }
 
 const AccountForm: React.FC = () => {
@@ -41,7 +43,6 @@ const AccountForm: React.FC = () => {
     async (data: FormData) => {
       if (user) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
-          // Make sure to include cookies with fetch
           credentials: 'include',
           method: 'PATCH',
           body: JSON.stringify(data),
@@ -59,6 +60,8 @@ const AccountForm: React.FC = () => {
           reset({
             email: json.doc.email,
             name: json.doc.name,
+            address: json.doc.address, 
+            contact: json.doc.contact, 
             password: '',
             passwordConfirm: '',
           })
@@ -79,11 +82,12 @@ const AccountForm: React.FC = () => {
       )
     }
 
-    // Once user is loaded, reset form to have default values
     if (user) {
       reset({
         email: user.email,
         name: user.name,
+        address: user.address, 
+        contact: user.contact, 
         password: '',
         passwordConfirm: '',
       })
@@ -95,16 +99,6 @@ const AccountForm: React.FC = () => {
       <Message error={error} success={success} className={classes.message} />
       {!changePassword ? (
         <Fragment>
-          <Input
-            name="email"
-            label="Email Address"
-            required
-            register={register}
-            error={errors.email}
-            type="email"
-          />
-          <Input name="name" label="Name" register={register} error={errors.name} />
-
           <p>
             {'Change your account details below, or '}
             <button
@@ -116,6 +110,35 @@ const AccountForm: React.FC = () => {
             </button>
             {' to change your password.'}
           </p>
+          <Input
+            name="email"
+            label="Email Address"
+            required
+            register={register}
+            error={errors.email}
+            type="email"
+          />
+          <Input 
+            name="name" 
+            label="Full Name" 
+            register={register} 
+            error={errors.name}
+            type="text" 
+          />
+          <Input
+            name="address"
+            label="Address" 
+            register={register}
+            error={errors.address}
+            type="text"
+          />
+          <Input
+            name="contact"
+            label="Contact Number" 
+            register={register}
+            error={errors.contact}
+            type="number"
+          />
         </Fragment>
       ) : (
         <Fragment>
@@ -144,7 +167,7 @@ const AccountForm: React.FC = () => {
             label="Confirm Password"
             required
             register={register}
-            validate={value => value === password.current || 'The passwords do not match'}
+            validate={(value) => value === password.current || 'The passwords do not match'}
             error={errors.passwordConfirm}
           />
         </Fragment>

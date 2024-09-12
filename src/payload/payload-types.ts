@@ -413,6 +413,8 @@ export interface Order {
 export interface User {
   id: string;
   name?: string | null;
+  address?: string | null;
+  contact?: number | null;
   roles?: ('admin' | 'customer')[] | null;
   purchases?: (string | Product)[] | null;
   stripeCustomerID?: string | null;

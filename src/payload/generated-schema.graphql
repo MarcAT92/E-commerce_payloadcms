@@ -4828,6 +4828,8 @@ type Order {
 type User {
   id: String
   name: String
+  address: String
+  contact: Float
   roles: [User_roles!]
   purchases: [Product!]
   stripeCustomerID: String
@@ -6204,6 +6206,8 @@ type Users {
 
 input User_where {
   name: User_name_operator
+  address: User_address_operator
+  contact: User_contact_operator
   roles: User_roles_operator
   purchases: User_purchases_operator
   stripeCustomerID: User_stripeCustomerID_operator
@@ -6227,6 +6231,27 @@ input User_name_operator {
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
+}
+
+input User_address_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_contact_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
   exists: Boolean
 }
 
@@ -6345,6 +6370,8 @@ input User_id_operator {
 
 input User_where_and {
   name: User_name_operator
+  address: User_address_operator
+  contact: User_contact_operator
   roles: User_roles_operator
   purchases: User_purchases_operator
   stripeCustomerID: User_stripeCustomerID_operator
@@ -6362,6 +6389,8 @@ input User_where_and {
 
 input User_where_or {
   name: User_name_operator
+  address: User_address_operator
+  contact: User_contact_operator
   roles: User_roles_operator
   purchases: User_purchases_operator
   stripeCustomerID: User_stripeCustomerID_operator
@@ -6388,6 +6417,8 @@ type usersDocAccess {
 
 type UsersDocAccessFields {
   name: UsersDocAccessFields_name
+  address: UsersDocAccessFields_address
+  contact: UsersDocAccessFields_contact
   roles: UsersDocAccessFields_roles
   purchases: UsersDocAccessFields_purchases
   stripeCustomerID: UsersDocAccessFields_stripeCustomerID
@@ -6419,6 +6450,52 @@ type UsersDocAccessFields_name_Update {
 }
 
 type UsersDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_address {
+  create: UsersDocAccessFields_address_Create
+  read: UsersDocAccessFields_address_Read
+  update: UsersDocAccessFields_address_Update
+  delete: UsersDocAccessFields_address_Delete
+}
+
+type UsersDocAccessFields_address_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_address_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_address_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_address_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_contact {
+  create: UsersDocAccessFields_contact_Create
+  read: UsersDocAccessFields_contact_Read
+  update: UsersDocAccessFields_contact_Update
+  delete: UsersDocAccessFields_contact_Delete
+}
+
+type UsersDocAccessFields_contact_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_contact_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_contact_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_contact_Delete {
   permission: Boolean!
 }
 
@@ -10575,6 +10652,8 @@ type usersAccess {
 
 type UsersFields {
   name: UsersFields_name
+  address: UsersFields_address
+  contact: UsersFields_contact
   roles: UsersFields_roles
   purchases: UsersFields_purchases
   stripeCustomerID: UsersFields_stripeCustomerID
@@ -10606,6 +10685,52 @@ type UsersFields_name_Update {
 }
 
 type UsersFields_name_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_address {
+  create: UsersFields_address_Create
+  read: UsersFields_address_Read
+  update: UsersFields_address_Update
+  delete: UsersFields_address_Delete
+}
+
+type UsersFields_address_Create {
+  permission: Boolean!
+}
+
+type UsersFields_address_Read {
+  permission: Boolean!
+}
+
+type UsersFields_address_Update {
+  permission: Boolean!
+}
+
+type UsersFields_address_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_contact {
+  create: UsersFields_contact_Create
+  read: UsersFields_contact_Read
+  update: UsersFields_contact_Update
+  delete: UsersFields_contact_Delete
+}
+
+type UsersFields_contact_Create {
+  permission: Boolean!
+}
+
+type UsersFields_contact_Read {
+  permission: Boolean!
+}
+
+type UsersFields_contact_Update {
+  permission: Boolean!
+}
+
+type UsersFields_contact_Delete {
   permission: Boolean!
 }
 
@@ -12321,6 +12446,8 @@ input mutationCategoryUpdate_BreadcrumbsInput {
 
 input mutationUserInput {
   name: String
+  address: String
+  contact: Float
   roles: [User_roles_MutationInput]
   purchases: [String]
   stripeCustomerID: String
@@ -12355,6 +12482,8 @@ input mutationUser_Cart_ItemsInput {
 
 input mutationUserUpdateInput {
   name: String
+  address: String
+  contact: Float
   roles: [UserUpdate_roles_MutationInput]
   purchases: [String]
   stripeCustomerID: String
