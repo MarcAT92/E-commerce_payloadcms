@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { Category } from '../../../payload/payload-types'
 import CategoryCard from './CategoryCard'
 
-const Categories = ({ categories }: { categories: Category }) => {
+const Categories = ({ categories }: { categories: Category[] }) => {
   return (
     <section className={classes.container}>
         <div className={classes.titleWrapper}>
-            <h3>Shop By Catergories</h3>
+            <h3>Shop By Categories</h3>
             <Link href="/products">Show All</Link>
         </div>
 
